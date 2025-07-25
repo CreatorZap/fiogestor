@@ -63,7 +63,7 @@
   "app/api/**/*.ts": {
     "runtime": "vercel-nodejs@3.0.0"
   }
-}
+},
   "env": {
     "NODE_ENV": "production"
   }
