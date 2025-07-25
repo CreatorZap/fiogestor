@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Meta Tags -->
+  <title>FioGestor - Seu ateliê em modo automático | Sistema para Costureiras</title>
+  <meta name="description" content="Sistema de gestão completo para costureiras autônomas. WhatsApp automático, agenda inteligente, controle financeiro. Teste grátis 14 dias!" />
+  <meta name="keywords" content="sistema costureira, gestão ateliê, whatsapp automático, agenda costureira, controle financeiro, software costura" />
+  <meta name="author" content="FioGestor Team" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fiogestor.vercel.app/" />
+  <meta property="og:title" content="FioGestor - Seu ateliê em modo automático" />
+  <meta property="og:description" content="Sistema completo para costureiras: WhatsApp automático, agenda inteligente e controle financeiro. Teste grátis!" />
+  <meta property="og:image" content="https://fiogestor.vercel.app/og-image.jpg" />
+  <meta property="og:site_name" content="FioGestor" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FioGestor - Sistema para Costureiras" />
+  <meta name="twitter:description" content="WhatsApp automático, agenda inteligente e controle financeiro para seu ateliê" />
+  <meta name="twitter:image" content="https://fiogestor.vercel.app/twitter-image.jpg" />
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#E91E63" />
+  
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://js.stripe.com" />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FioGestor",
+    "description": "Sistema de gestão completo para costureiras autônomas",
+    "url": "https://fiogestor.vercel.app",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Plano Starter",
+        "price": "19.90",
+        "priceCurrency": "BRL",
+        "billingIncrement": "P1M"
+      },
+      {
+        "@type": "Offer",
+        "name": "Plano Professional",
+        "price": "39.90",
+        "priceCurrency": "BRL",
+        "billingIncrement": "P1M"
+      },
+      {
+        "@type": "Offer",
+        "name": "Plano Premium",
+        "price": "69.90",
+        "priceCurrency": "BRL",
+        "billingIncrement": "P1M"
+      }
+    ],
+    "creator": {
+      "@type": "Organization",
+      "name": "FioGestor Team"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "127"
+    }
+  }
+  </script>
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  
+  <!-- Facebook Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  
+  <!-- Critical CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background-color: #ffffff;
+    }
+    
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 50%, #fffbeb 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease-out;
+    }
+    
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #f3f4f6;
+      border-top: 4px solid #E91E63;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .loading-text {
+      margin-top: 20px;
+      color: #6b7280;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 50%, #fffbeb 100%);
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Carregando FioGestor...</div>
+  </div>
+  
+  <!-- App Root -->
+  <div id="root"></div>
+  
+  <!-- Remove loading screen -->
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+          loadingScreen.style.opacity = '0';
+          setTimeout(function() {
+            loadingScreen.remove();
+          }, 500);
+        }
+      }, 1500);
+    });
+  </script>
+  
+  <!-- App Script -->
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
+
